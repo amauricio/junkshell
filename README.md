@@ -1,4 +1,4 @@
-# ⚡ Luminus: powershell shellcode loader
+# ⚡ Junkshell: powershell shellcode loader
 Sometimes, you need a fast way to encode your shellcode and execute it easily without being blocked by AV/EDR. Luminus is a PowerShell script designed to encode your shellcode and execute it directly in memory. The best part is the powershell script is different on each generation, so it's hard to detect.
 
 ## How it works
@@ -7,7 +7,7 @@ Luminus utilizes an old technique based on `junk codes`. Essentially, it involve
 
 ## How to use it
 ```bash
-python3 luminus.py -s shellcode.bin -o revshell.ps1
+python3 junkshell.py -s shellcode.bin -o revshell.ps1
 ```
 It will generate a powershell script that you can run directly on the target machine.
 
