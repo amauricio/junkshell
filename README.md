@@ -3,7 +3,7 @@ Sometimes, you need a fast way to encode your shellcode and execute it easily wi
 
 ## How it works
 
-Junkshell utilizes an old technique based on `junk codes`. Essentially, it involves reserving a large chunk of memory and filling it with junk code. The shellcode is then placed at the end of this `junk code` and executed. This approach allows for bypassing AV/EDR detection, as the trick lies in using valid instructions instead of traditional `NOPs` to fill the memory. While `NOPs` are typically ignored by AV/EDR, using instructions like `xor eax, 0` or `sub eax, 0`, which do nothing but are still valid instructions, helps achieve successful execution of the shellcode.
+Junkshell utilizes an old technique based on `junk codes`. Essentially, it involves reserving a large chunk of memory and filling it with junk code. The shellcode is then placed at the end of this `junk code` and executed. This approach allows for bypassing AV/EDR detection, as the trick lies in using valid instructions instead of traditional `NOPs` to fill the memory. While `NOPs` are typically ignored by AV/EDR, using instructions like `xor eax, 0` or `sub eax, 0`, which do nothing but are still valid instructions, helps achieve successful execution of the shellcode. Check my [blog post](https://synawk.com/blog/junkshell-a-naive-approach-to-bypass-av-edr) for more details.
 
 Finally the AV/EDR stops the analysis because the payload is too long to be analyzed. The ammount of `junk code` is generate randomly always above 10000 bytes.
 
