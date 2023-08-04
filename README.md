@@ -13,6 +13,12 @@ python3 junkshell.py -s shellcode.bin -o revshell.ps1
 ```
 It will generate a powershell script that you can run directly on the target machine.
 
+## Actually works?
+
+This is an example bypassing a meterpreter reverse shell in Sophos.
+
+![junk code shellcode sophos](https://github.com/amauricio/junkshell/blob/master/resources/junk_code_shellcode_sophos.gif?raw=true)
+
 ## Output
 
 ```bash
