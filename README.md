@@ -3,6 +3,8 @@ Sometimes, you need a fast way to encode your shellcode and execute it easily wi
 
 ## Changelog
 ### v0.2
+![virus total bypass](https://github.com/amauricio/junkshell/blob/master/resources/vt.jpg?raw=true)
+
 - Added Junk Code inside the powershell.
 - Fixed bypass in many EDRs/AVs.
 - Multiple base64 encoding in the shellcode.
